@@ -3,6 +3,9 @@
 Jeu de Sudoku en PWA (application web installable) : 5 niveaux, jouable hors ligne,
 sans publicité, sans compte, sans dépendance externe.
 
+**▶ Jouer / installer : <https://enzo-dc99.github.io/sudoku/>**
+(sur iPhone, ouvrir ce lien dans Safari → Partager → « Sur l'écran d'accueil »)
+
 ## Fonctionnalités
 
 - **5 niveaux** : Facile, Moyen, Difficile, Expert, Diabolique. La difficulté n'est pas
