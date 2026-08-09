@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sudoku</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="Jeu de Sudoku avec 5 niveaux de difficulté, jouable hors ligne.">
+<meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sudoku">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ÉCRAN D'ACCUEIL -->
+<section id="screen-home" class="screen active">
+  <header class="home-header">
+    <div class="logo" aria-hidden="true">
+      <span>5</span><span>3</span><span>7</span>
+      <span>6</span><span>1</span><span>9</span>
+      <span>9</span><span>8</span><span>2</span>
+    </div>
+    <h1>Sudoku</h1>
+    <p class="tagline">Cinq niveaux. Hors ligne. Sans publicité.</p>
+  </header>
+
+  <button id="btn-continue" class="btn btn-primary hidden">
+    <span class="btn-main">Reprendre la partie</span>
+    <span class="btn-sub" id="continue-sub"></span>
+  </button>
+
+  <h2 class="section-title">Nouvelle partie</h2>
+  <div id="level-list" class="level-list"></div>
+
+  <button id="btn-stats" class="btn btn-ghost">Statistiques</button>
+  <p class="hint-install" id="install-hint"></p>
+</section>
+
+<!-- ÉCRAN DE JEU -->
+<section id="screen-game" class="screen">
+  <header class="game-header">
+    <button id="btn-back" class="icon-btn" aria-label="Retour au menu">‹</button>
+    <div class="meta">
+      <span id="meta-level">Moyen</span>
+      <span class="dot">·</span>
+      <span id="meta-mistakes">0 erreur</span>
+    </div>
+    <button id="btn-pause" class="icon-btn timer" aria-label="Mettre en pause"><span id="timer">0:00</span></button>
+  </header>
+
+  <div class="board-wrap">
+    <div id="board" class="board" role="grid" aria-label="Grille de Sudoku"></div>
+    <div id="pause-overlay" class="overlay hidden">
+      <div class="overlay-card">
+        <h2>Pause</h2>
+        <p>La grille est masquée.</p>
+        <button id="btn-resume" class="btn btn-primary"><span class="btn-main">Reprendre</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tools">
+    <button class="tool" id="tool-undo"><span class="tool-icon">↶</span><span>Annuler</span></button>
+    <button class="tool" id="tool-erase"><span class="tool-icon">⌫</span><span>Effacer</span></button>
+    <button class="tool" id="tool-notes"><span class="tool-icon">✎</span><span>Notes</span><span class="badge" id="notes-badge">OFF</span></button>
+    <button class="tool" id="tool-hint"><span class="tool-icon">💡</span><span>Indice</span></button>
+  </div>
+
+  <div id="pad" class="pad"></div>
+</section>
+
+<!-- VICTOIRE -->
+<div id="win-overlay" class="overlay full hidden">
+  <div class="overlay-card win">
+    <div class="win-mark">✓</div>
+    <h2>Grille résolue !</h2>
+    <dl class="win-stats">
+      <div><dt>Temps</dt><dd id="win-time">—</dd></div>
+      <div><dt>Niveau</dt><dd id="win-level">—</dd></div>
+      <div><dt>Erreurs</dt><dd id="win-mistakes">—</dd></div>
+    </dl>
+    <p id="win-record" class="win-record hidden">🏆 Nouveau meilleur temps !</p>
+    <button id="win-again" class="btn btn-primary"><span class="btn-main">Rejouer ce niveau</span></button>
+    <button id="win-home" class="btn btn-ghost">Menu principal</button>
+  </div>
+</div>
+
+<!-- STATISTIQUES -->
+<div id="stats-overlay" class="overlay full hidden">
+  <div class="overlay-card">
+    <h2>Statistiques</h2>
+    <div id="stats-body" class="stats-body"></div>
+    <button id="stats-close" class="btn btn-primary"><span class="btn-main">Fermer</span></button>
+    <button id="stats-reset" class="btn btn-ghost danger">Réinitialiser</button>
+  </div>
+</div>
+
+<!-- CHARGEMENT -->
+<div id="loading" class="overlay full hidden">
+  <div class="spinner" aria-hidden="true"></div>
+  <p>Génération de la grille…</p>
+</div>
+
+<script src="js/sudoku.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
