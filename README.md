@@ -1,7 +1,8 @@
 # Sudoku
 
 Jeu de Sudoku en PWA (application web installable) : 5 niveaux, jouable hors ligne,
-sans publicité, sans compte, sans dépendance externe.
+sans publicité, sans compte, sans dépendance externe. L'app contient aussi
+**Code couleur**, un jeu de déduction de combinaison de couleurs (onglet en haut de l'accueil).
 
 **▶ Jouer / installer : <https://enzo-dc99.github.io/sudoku/>**
 (sur iPhone, ouvrir ce lien dans Safari → Partager → « Sur l'écran d'accueil »)
@@ -21,6 +22,20 @@ sans publicité, sans compte, sans dépendance externe.
 - Statistiques par niveau : parties gagnées, meilleur temps, temps moyen.
 - Thème clair / sombre automatique, gestion des encoches (safe areas), retour haptique.
 - Clavier pris en charge sur ordinateur : `1`–`9`, `Backspace`, `N` (notes), `H` (indice), flèches.
+
+## Code couleur
+
+Un code de couleurs est caché ; à chaque essai, des pastilles indiquent combien de pions
+sont de la bonne couleur à la bonne place (●) et combien sont de la bonne couleur mais
+mal placés (○), sans dire lesquels.
+
+- **4 niveaux** : Facile (4 pions, 6 couleurs, sans doublon), Moyen (4 pions, 6 couleurs),
+  Difficile (5 pions, 7 couleurs), Expert (6 pions, 8 couleurs, 12 essais).
+- Compteur des codes encore compatibles avec les réponses reçues.
+- Indice : révèle la couleur d'une position (au plus tous les pions sauf un).
+- Sauvegarde automatique, statistiques par niveau (record en nombre d'essais).
+- Clavier sur ordinateur : `1`–`8` (couleurs), `Backspace`, `Entrée` (valider), `H` (indice),
+  flèches gauche/droite (emplacement).
 
 ## Tester sur l'ordinateur
 
@@ -80,6 +95,8 @@ index.html               écrans (accueil, jeu, victoire, statistiques)
 css/style.css            thème clair/sombre, grille, pavé numérique
 js/sudoku.js             moteur : génération, unicité, notation de difficulté
 js/app.js                interface, sauvegarde, chronomètre, statistiques
+js/code.js               moteur Code couleur : code secret, évaluation, codes possibles
+js/code-app.js           interface Code couleur
 manifest.webmanifest     métadonnées d'installation
 sw.js                    service worker (fonctionnement hors ligne)
 icons/                   icônes PNG (générées par tools/make-icons.js)
@@ -89,6 +106,6 @@ serve.js                 serveur statique local
 ## Mettre à jour l'app installée
 
 Après modification des fichiers, incrémenter `VERSION` dans [sw.js](sw.js)
-(`sudoku-v1` → `sudoku-v2`) et republier : l'ancien cache est purgé au prochain lancement.
+(`sudoku-v2` → `sudoku-v3`) et republier : l'ancien cache est purgé au prochain lancement.
 
 Pour régénérer les icônes : `node tools/make-icons.js`.

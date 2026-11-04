@@ -508,6 +508,26 @@
     window.addEventListener('pagehide', persist);
   }
 
+  /* ---------- Choix du jeu sur l'accueil ---------- */
+  const GAME_KEY = 'home.game.v1';
+  function setHomeGame(name) {
+    document.querySelectorAll('.game-switch [data-game]').forEach(b => {
+      const on = b.dataset.game === name;
+      b.setAttribute('aria-selected', on);
+      $('#home-' + b.dataset.game).classList.toggle('hidden', !on);
+    });
+    try { localStorage.setItem(GAME_KEY, name); } catch { /* mode privé */ }
+  }
+  function wireGameSwitch() {
+    document.querySelector('.game-switch').addEventListener('click', e => {
+      const b = e.target.closest('[data-game]');
+      if (b) setHomeGame(b.dataset.game);
+    });
+    let last = null;
+    try { last = localStorage.getItem(GAME_KEY); } catch { /* mode privé */ }
+    if (last && $('#home-' + last)) setHomeGame(last);
+  }
+
   function installHint() {
     const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
     if (standalone) return;
@@ -521,6 +541,7 @@
   buildBoard();
   buildPad();
   wire();
+  wireGameSwitch();
   renderHome();
   installHint();
 

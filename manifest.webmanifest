@@ -1,7 +1,7 @@
 {
   "name": "Sudoku",
   "short_name": "Sudoku",
-  "description": "Jeu de Sudoku avec cinq niveaux de difficulté, jouable hors ligne.",
+  "description": "Sudoku (cinq niveaux) et Code couleur, un jeu de déduction, jouables hors ligne.",
   "lang": "fr",
   "dir": "ltr",
   "start_url": "./",

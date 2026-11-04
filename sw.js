@@ -1,11 +1,13 @@
 /* Service worker : le jeu fonctionne entièrement hors ligne. */
-const VERSION = 'sudoku-v1';
+const VERSION = 'sudoku-v2';
 const ASSETS = [
   './',
   './index.html',
   './css/style.css',
   './js/sudoku.js',
   './js/app.js',
+  './js/code.js',
+  './js/code-app.js',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
